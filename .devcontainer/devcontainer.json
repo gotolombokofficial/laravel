@@ -1,13 +1,13 @@
 {
-    "name": "Laravel Codespace Fixed",
+    "name": "Laravel PHP 8.3",
     "build": {
         "dockerfile": "Dockerfile"
     },
     "features": {
+        // Kita butuh Node.js karena image PHP tidak membawanya
         "ghcr.io/devcontainers/features/node:1": {
             "version": "lts"
         }
-        // Kita hapus feature PHP karena sudah di-handle Dockerfile
     },
     "customizations": {
         "vscode": {
@@ -18,10 +18,10 @@
                 "mikestead.dotenv"
             ],
             "settings": {
-                "php.validate.executablePath": "/usr/bin/php"
+                "php.validate.executablePath": "/usr/local/bin/php"
             }
         }
     },
-    "postCreateCommand": "composer install && cp .env.example .env && php artisan key:generate",
-    "remoteUser": "codespace"
+    "postCreateCommand": "composer install && npm install && cp .env.example .env && php artisan key:generate",
+    "remoteUser": "vscode"
 }
